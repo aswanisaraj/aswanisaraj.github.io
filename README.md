@@ -4,7 +4,7 @@ This is my personal portfolio website built using **HTML, CSS, and JavaScript**.
 
 ## 🔗 Live Website
 
-(https://aswanisaraj.github.io/)
+(https://aswanisaraj.me/)
 
 ## 📁 Project Structure
 
