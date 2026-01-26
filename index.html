@@ -12,6 +12,34 @@
         overflow: hidden;
         position: relative;
       }
+      
+      /* Blockchain canvas background */
+      #blockchain-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+      }
+      
+      /* Ensure content sits above canvas */
+      #root {
+        position: relative;
+        z-index: 1;
+      }
+      
+      /* Make background transparent to show canvas */
+      .min-h-screen.bg-background {
+        background-color: transparent !important;
+      }
+      
+      /* Hide or make gradient overlay transparent */
+      .absolute.inset-0.bg-gradient-to-br {
+        background: rgba(10, 10, 10, 0.4) !important;
+        opacity: 0.6;
+      }
     </style>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Saraj Menghwar</title>
