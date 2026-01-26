@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -12,7 +12,7 @@
         overflow: hidden;
         position: relative;
       }
-      
+
       /* Blockchain canvas background */
       #blockchain-canvas {
         position: fixed;
@@ -23,18 +23,18 @@
         z-index: 0;
         pointer-events: none;
       }
-      
+
       /* Ensure content sits above canvas */
       #root {
         position: relative;
         z-index: 1;
       }
-      
+
       /* Make background transparent to show canvas */
       .min-h-screen.bg-background {
         background-color: transparent !important;
       }
-      
+
       /* Hide or make gradient overlay transparent */
       .absolute.inset-0.bg-gradient-to-br {
         background: rgba(10, 10, 10, 0.4) !important;
@@ -53,8 +53,17 @@
     <meta content="Personal Portfolio" name="twitter:description" />
 
     <!-- canonical favicon (cache-busted) -->
-    <link rel="icon" href="assets/favicon.png?v=2" type="image/png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="assets/favicon.png?v=2" sizes="180x180" />
+    <link
+      rel="icon"
+      href="assets/favicon.png?v=2"
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/favicon.png?v=2"
+      sizes="180x180"
+    />
     <link crossorigin="" href="./styles.css" rel="stylesheet" />
   </head>
   <body>
@@ -65,7 +74,7 @@
         role="region"
         style="pointer-events: none"
         tabindex="-1"
-      > 
+      >
         <ol
           class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"
           tabindex="-1"
@@ -190,8 +199,12 @@
                   </a>
                 </div>
               </div>
-              <div class="flex justify-center md:justify-end animate-fade-in-delay-2">
-                <div class="relative profile-card bg-background rounded-2xl p-2">
+              <div
+                class="flex justify-center md:justify-end animate-fade-in-delay-2"
+              >
+                <div
+                  class="relative profile-card bg-background rounded-2xl p-2"
+                >
                   <img
                     alt="Saraj Menghwar"
                     class="w-full h-auto rounded-xl shadow-2xl object-cover border-0"
@@ -251,9 +264,11 @@
                 </p>
               </div>
               <div class="relative">
-                <div class="aspect-square rounded-2xl bg-gradient-subtle p-8 flex items-center justify-center text-8xl">
-         🐧
-        </div>
+                <div
+                  class="aspect-square rounded-2xl bg-gradient-subtle p-8 flex items-center justify-center text-8xl"
+                >
+                  🐧
+                </div>
               </div>
             </div>
           </div>
@@ -1036,9 +1051,10 @@
               >
                 <div class="relative overflow-hidden rounded-t-lg">
                   <img
-                    alt="Pharmacy Management System"
-                    class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                    src="./assets/pharmacy-management.jpg"
+                    alt="PerformancePlus - Employee Performance Management System"
+                    class="w-full h-48 md:h-64 lg:h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+                    src="./assets/kpi.png"
+                    style="max-width:100%;"
                   />
                   <div
                     class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -1048,12 +1064,12 @@
                   <h3
                     class="text-2xl font-semibold leading-none tracking-tight group-hover:text-primary transition-colors"
                   >
-                    Pharmacy Management System
+                    PerformancePlus - Employee Performance Management System
                   </h3>
                   <p class="text-sm text-muted-foreground">
-                    A comprehensive software solution to manage pharmacy
-                    operations including inventory management, sales tracking,
-                    prescription handling, and supplier records.
+                    PerformancePlus is a Java-based web application to track
+                    employee KPIs, provide managerial feedback, and maintain
+                    audit logs for transparent performance management.
                   </p>
                 </div>
                 <div class="p-6 pt-0">
@@ -1061,26 +1077,28 @@
                     <div
                       class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"
                     >
-                      Microsoft Visio
+                      Java Servlets
                     </div>
                     <div
                       class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"
                     >
-                      Rational Rose
+                      JSP
                     </div>
                     <div
                       class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"
                     >
-                      UML
+                      MySQL
                     </div>
                     <div
                       class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"
                     >
-                      Software Engineering
+                      Bootstrap
                     </div>
                   </div>
                   <div class="flex gap-4">
-                    <button
+                    <a
+                      href="https://github.com/aswanisaraj/PerformancePlus"
+                      target="_blank" rel="noopener noreferrer"
                       class="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
                     >
                       <svg
@@ -1101,8 +1119,10 @@
                         <path d="M9 18c-4.51 2-5-2-7-2"></path>
                       </svg>
                       Code
-                    </button>
-                    <button
+                    </a>
+                    <a
+                      href="https://www.youtube.com/watch?v=0kiP5wumt8c"
+                      target="_blank" rel="noopener noreferrer"
                       class="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3 flex items-center gap-2"
                     >
                       <svg
@@ -1124,7 +1144,7 @@
                         ></path>
                       </svg>
                       Demo
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1177,7 +1197,9 @@
                     </div>
                   </div>
                   <div class="flex gap-4">
-                    <button
+                    <a
+                      href="https://github.com/aswanisaraj/Pharmacy-Mgmt-ASM8086"
+                      target="_blank" rel="noopener noreferrer"
                       class="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 flex items-center gap-2"
                     >
                       <svg
@@ -1198,8 +1220,10 @@
                         <path d="M9 18c-4.51 2-5-2-7-2"></path>
                       </svg>
                       Code
-                    </button>
-                    <button
+                    </a>
+                    <a
+                      href="https://github.com/aswanisaraj/Pharmacy-Mgmt-ASM8086/assets/115165910/f7721399-bb80-4b63-8012-e38b12f4d5bc"
+                      target="_blank" rel="noopener noreferrer"
                       class="justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3 flex items-center gap-2"
                     >
                       <svg
@@ -1221,7 +1245,7 @@
                         ></path>
                       </svg>
                       Demo
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1555,13 +1579,12 @@
                     ></path>
                   </svg>
                   <p class="text-muted-foreground leading-relaxed mb-6 italic">
-                    "Excellent work on Linux server optimization and C++
-                    development. Saraj delivered efficient solutions with great
-                    attention to detail and maintained excellent communication
-                    throughout the project."
+                    "Very diligent work and good communication, Saraj was very
+                    good to work very late in his timzone so that I could work
+                    with him during the day in my time zone."
                   </p>
                   <div class="border-t border-border/50 pt-4">
-                    <div class="font-semibold">Client Review</div>
+                    <div class="font-semibold"><a href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3" target="_blank" rel="noopener noreferrer">Client Review</a></div>
                     <div class="text-sm text-muted-foreground">
                       Linux System Administration Project
                     </div>
@@ -1677,12 +1700,14 @@
                     ></path>
                   </svg>
                   <p class="text-muted-foreground leading-relaxed mb-6 italic">
-                    "Outstanding programming skills and problem-solving
-                    approach. The code quality was excellent and the project was
-                    delivered on time with comprehensive documentation."
+                    "Saraj is an excellent Devops and he helped me with my data
+                    retrieval problem considering linux. Excellent advice,
+                    command prompting and general help over he issue. He had
+                    plenty of patience to walk me through the troubleshooting.
+                    Thank you!"
                   </p>
                   <div class="border-t border-border/50 pt-4">
-                    <div class="font-semibold">Project Feedback</div>
+                    <div class="font-semibold"><a href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3" target="_blank" rel="noopener noreferrer">Project Feedback</a></div>
                     <div class="text-sm text-muted-foreground">
                       C++ Development Project
                     </div>
@@ -1798,12 +1823,14 @@
                     ></path>
                   </svg>
                   <p class="text-muted-foreground leading-relaxed mb-6 italic">
-                    "Professional service with deep Linux knowledge. Saraj
-                    quickly identified and resolved complex system issues,
-                    demonstrating both technical expertise and reliability."
+                    "My collaboration with Saraj was excellent. He managed our
+                    Linux server effectively, making sure everything functioned
+                    safely and properly. Highly recommended for any Linux
+                    administration chores; dependable, informed, and
+                    responsive."
                   </p>
                   <div class="border-t border-border/50 pt-4">
-                    <div class="font-semibold">Client Testimonial</div>
+                    <div class="font-semibold"><a href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3" target="_blank" rel="noopener noreferrer">Client Testimonial</a></div>
                     <div class="text-sm text-muted-foreground">
                       System Administration
                     </div>

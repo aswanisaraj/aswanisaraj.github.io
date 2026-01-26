@@ -408,6 +408,31 @@ body {
   white-space: nowrap;
   border-width: 0;
 }
+/* Testimonial link button styles */
+#testimonials .font-semibold > a {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.35rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+#testimonials .font-semibold > a:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+#testimonials .font-semibold > a:active {
+  transform: translateY(0);
+  filter: brightness(0.9);
+}
+#testimonials .font-semibold > a:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
