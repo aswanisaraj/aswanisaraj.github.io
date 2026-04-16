@@ -1,886 +1,1656 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saraj Menghwar — DevSecOps &amp; Linux Security Engineer</title>
-  <meta name="description" content="Top-Rated DevSecOps &amp; Linux Security Engineer. I help startups secure Linux infrastructure, automate DevOps pipelines, and build systems that stay up." />
-  <meta name="author" content="Saraj Menghwar" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Saraj Menghwar — DevSecOps &amp; Linux Security" />
-  <meta property="og:description" content="I help startups secure Linux infrastructure, automate DevOps pipelines, and build systems that stay up." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Saraj Menghwar — DevSecOps &amp; Linux Security" />
-
-  <link rel="icon" href="assets/favicon.png?v=2027" type="image/png" sizes="64x64" />
-  <link rel="apple-touch-icon" href="assets/favicon.png?v=2027" sizes="180x180" />
-
-  <!-- SVG fallback favicon: terminal cursor ">_" matching theme -->
-  <link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231e1e1e'/><text x='10' y='44' font-family='monospace' font-size='34' font-weight='700' fill='%234fc1ff'>&gt;</text><rect x='34' y='36' width='16' height='6' fill='%23c586c0'/></svg>" />
-
-  <!-- Fonts: Inter (UI) + JetBrains Mono (code) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-
-  <!-- Ambient grid + glow backdrop -->
-  <div class="bg-layer" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
-  </div>
-
-  <!-- Top VS Code-style tab bar -->
-  <header class="tabbar" id="tabbar">
-    <div class="tabbar-inner">
-      <div class="tabbar-left">
-        <div class="window-dots" aria-hidden="true">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-amber"></span>
-          <span class="dot dot-green"></span>
-        </div>
-        <a href="#home" class="brand">
-          <span class="brand-prompt">&gt;_</span>
-          <span class="brand-name">saraj<span class="brand-dot">.</span>menghwar</span>
-        </a>
-      </div>
-
-      <nav class="tabs" aria-label="Primary">
-        <a class="tab" href="#about"><span class="tab-icon">{}</span>about<span class="tab-ext">.md</span></a>
-        <a class="tab" href="#stats"><span class="tab-icon">#</span>impact<span class="tab-ext">.json</span></a>
-        <a class="tab" href="#services"><span class="tab-icon">λ</span>services<span class="tab-ext">.ts</span></a>
-        <a class="tab" href="#skills"><span class="tab-icon">$</span>skills<span class="tab-ext">.sh</span></a>
-        <a class="tab" href="#projects"><span class="tab-icon">//</span>projects<span class="tab-ext">.yml</span></a>
-        <a class="tab" href="#contact"><span class="tab-icon">@</span>contact<span class="tab-ext">.env</span></a>
-      </nav>
-
-      <div class="tabbar-right">
-        <a class="btn-ghost" href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3" target="_blank" rel="noopener">
-          <span class="status-dot"></span> Top Rated
-        </a>
-        <a class="btn-primary" href="assets/resume.pdf" download>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Resume
-        </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile drawer -->
-    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-      <a href="#about">about.md</a>
-      <a href="#stats">impact.json</a>
-      <a href="#services">services.ts</a>
-      <a href="#skills">skills.sh</a>
-      <a href="#projects">projects.yml</a>
-      <a href="#contact">contact.env</a>
-      <a href="assets/resume.pdf" download class="drawer-cta">Download Résumé</a>
-    </div>
-  </header>
-
-  <!-- Activity bar (desktop only) -->
-  <aside class="activity-bar" aria-hidden="true">
-    <a href="#home" class="ab-item active" title="Home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
-    </a>
-    <a href="#about" class="ab-item" title="About">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
-    </a>
-    <a href="#services" class="ab-item" title="Services">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-    </a>
-    <a href="#skills" class="ab-item" title="Skills">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-    </a>
-    <a href="#projects" class="ab-item" title="Projects">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
-    </a>
-    <a href="#contact" class="ab-item" title="Contact">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><polyline points="4 4 12 13 20 4"/></svg>
-    </a>
-  </aside>
-
-  <main class="main">
-
-    <!-- ============ HERO ============ -->
-    <section id="home" class="hero reveal">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="pulse"></span>
-            <span class="eyebrow-text">
-              <span class="mono-k">const</span>
-              <span class="mono-v">status</span> =
-              <span class="mono-s">"Available for new Engagements"</span>
-            </span>
-          </div>
-
-          <h1 class="hero-title">
-            Your servers shouldn't
-            <span class="title-accent">keep you up at night.</span>
-          </h1>
-
-          <!-- Terminal block -->
-          <div class="terminal" role="region" aria-label="Terminal introduction">
-            <div class="terminal-head">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-amber"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="terminal-title">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-                zsh — saraj@devsecops ~
-              </div>
-              <div class="terminal-actions"><span></span><span></span></div>
-            </div>
-            <div class="terminal-body">
-              <div class="t-line"><span class="t-prompt">saraj@devsecops</span><span class="t-sep">:</span><span class="t-path">~/about</span><span class="t-dollar">$</span> <span class="t-cmd">whoami</span></div>
-              <div class="t-out" id="termTyped"></div>
-              <div class="t-line mt"><span class="t-prompt">saraj@devsecops</span><span class="t-sep">:</span><span class="t-path">~/about</span><span class="t-dollar">$</span> <span class="t-cmd">cat mission.txt</span></div>
-              <p class="t-paragraph">
-                I help startups, SaaS companies, and growing teams
-                <span class="hl-blue">secure Linux infrastructure</span>,
-                <span class="hl-purple">automate DevOps pipelines</span>, and
-                <span class="hl-green">build systems that stay up</span>
-                - so you can focus on shipping products instead of
-                <span class="hl-orange">chasing fires</span>.
-              </p>
-              <div class="t-line mt"><span class="t-prompt">saraj@devsecops</span><span class="t-sep">:</span><span class="t-path">~/about</span><span class="t-dollar">$</span> <span class="cursor-blink">▊</span></div>
-            </div>
-          </div>
-
-          <div class="hero-cta">
-            <a href="#services" class="btn-primary btn-lg">
-              <span>View My Work</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="#contact" class="btn-outline btn-lg">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><polyline points="4 4 12 13 20 4"/></svg>
-              <span>Contact Me</span>
-            </a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="meta-item"><span class="meta-k">Location</span><span class="meta-v">Lahore, PK · UTC+5</span></div>
-            <div class="meta-divider"></div>
-            <div class="meta-item"><span class="meta-k">Job Success</span><span class="meta-v hl-green">100%</span></div>
-            <div class="meta-divider"></div>
-            <div class="meta-item"><span class="meta-k">Status</span><span class="meta-v hl-blue">Top Rated</span></div>
-          </div>
-        </div>
-
-        <div class="hero-portrait">
-          <div class="portrait-frame">
-            <div class="portrait-ring"></div>
-            <div class="portrait-ring portrait-ring-2"></div>
-            <img src="assets/profile.jpeg" alt="Saraj Menghwar portrait" />
-            <div class="portrait-badge">
-              <span class="pulse pulse-green"></span> Online
-            </div>
-          </div>
-          <div class="portrait-tags">
-            <span class="float-tag tag-1"><span class="dot-sm" style="background:#c586c0"></span>Top Rated</span>
-            <span class="float-tag tag-2"><span class="dot-sm" style="background:#6a9955"></span>100% Job Success</span>
-            <span class="float-tag tag-3"><span class="dot-sm" style="background:#4fc1ff"></span>DevSecOps</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scroll hint -->
-      <a href="#about" class="scroll-hint" aria-label="Scroll to about section">
-        <span>scroll</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </a>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section id="about" class="section reveal">
-      <div class="section-head">
-        <div class="section-kicker"><span class="kicker-num">01</span><span>About</span></div>
-        <h2 class="section-title">Who I Am</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card glass">
-          <h3 class="about-heading">DevSecOps &amp; Linux Security Engineer</h3>
-          <p>
-            I'm <strong>Saraj Menghwar</strong>, a Computer Science graduate from Tharparkar, Sindh, now based in Lahore. Over <strong>1.5 years</strong> of hands-on work, I've focused on hardening Linux infrastructure, securing cloud environments, and designing DevOps pipelines that actually survive production.
-          </p>
-          <p>
-            I work with startups and growing teams - shipping reproducible infrastructure, CI/CD that deploys in minutes instead of hours, and monitoring that tells you about problems <em>before</em> customers do.
-          </p>
-          <div class="chip-row">
-            <span class="chip"><span class="chip-dot" style="background:#4fc1ff"></span>1.5 years of experience</span>
-            <span class="chip"><span class="chip-dot" style="background:#c586c0"></span>Top-Rated Freelancer</span>
-            <span class="chip"><span class="chip-dot" style="background:#6a9955"></span>100% Job Success</span>
-          </div>
-        </div>
-
-        <div class="about-side">
-          <div class="side-card glass">
-            <div class="side-card-head">
-              <span class="side-card-title">Philosophy</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ce9178" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <ul class="philosophy">
-              <li><span class="bullet">01</span>Security is a feature, not a ticket.</li>
-              <li><span class="bullet">02</span>If you can't reproduce it, you don't own it.</li>
-              <li><span class="bullet">03</span>Automate the boring stuff - twice.</li>
-              <li><span class="bullet">04</span>Monitoring beats heroics.</li>
-            </ul>
-          </div>
-
-          <div class="side-card glass interests">
-            <div class="side-card-head">
-              <span class="side-card-title">Off-Duty</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c586c0" stroke-width="2"><polygon points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2"/></svg>
-            </div>
-            <p class="interests-p">Aspiring to become <strong class="hl-green">Pakistan's first chess Grandmaster</strong>. I spend my evenings between a terminal and a chessboard.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="stats" class="section reveal">
-      <div class="section-head">
-        <div class="section-kicker"><span class="kicker-num">02</span><span>Impact</span></div>
-        <h2 class="section-title">Measurable Results</h2>
-      </div>
-
-      <div class="bento">
-        <div class="bento-card bento-lg glass" data-accent="blue">
-          <div class="bento-top">
-            <span class="bento-label">AWS Cost Reduction</span>
-            <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div class="bento-value" data-count="35" data-suffix="%">0%</div>
-          <p class="bento-desc">Average monthly cloud spend reduction across right-sizing, reserved capacity, and dead-resource reclamation.</p>
-          <div class="spark" data-type="cost">
-            <svg viewBox="0 0 120 32" preserveAspectRatio="none"><polyline points="0,8 15,10 30,6 45,12 60,18 75,20 90,24 105,26 120,28" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-          </div>
-        </div>
-
-        <div class="bento-card glass" data-accent="green">
-          <div class="bento-top">
-            <span class="bento-label">Uptime Maintained</span>
-            <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="bento-value" data-count="99.9" data-suffix="%">0%</div>
-          <p class="bento-desc">Across production Linux fleets with redundant load balancers and HA databases.</p>
-        </div>
-
-        <div class="bento-card glass" data-accent="purple">
-          <div class="bento-top">
-            <span class="bento-label">Deployment Cycle</span>
-            <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-          </div>
-          <div class="bento-value" data-count="15" data-suffix="min">0min</div>
-          <p class="bento-desc">From commit to production via hardened CI/CD — down from multi-hour manual releases.</p>
-        </div>
-
-        <div class="bento-card glass" data-accent="orange">
-          <div class="bento-top">
-            <span class="bento-label">Vulnerabilities Closed</span>
-            <svg class="bento-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="bento-value" data-count="90" data-suffix="%">0%</div>
-          <p class="bento-desc">CVE exposure reduced via patch pipelines, CIS hardening, and secrets rotation.</p>
-        </div>
-
-        <div class="bento-card bento-wide glass" data-accent="blue">
-          <div class="bento-top">
-            <span class="bento-label">What this looks like in production</span>
-          </div>
-          <div class="mini-metrics">
-            <div class="mm"><span class="mm-v">100<span class="hl-green">%</span></span><span class="mm-k">Job Success</span></div>
-            <div class="mm"><span class="mm-v hl-blue">Top</span><span class="mm-k">Rated Talent</span></div>
-            <div class="mm"><span class="mm-v">24/7</span><span class="mm-k">Incident Coverage</span></div>
-            <div class="mm"><span class="mm-v hl-purple">0</span><span class="mm-k">Breaches on Watch</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SERVICES ============ -->
-    <section id="services" class="section reveal">
-      <div class="section-head">
-        <div class="section-kicker"><span class="kicker-num">03</span><span>Services</span></div>
-        <h2 class="section-title">What I Deliver</h2>
-      </div>
-
-      <div class="services-grid">
-        <article class="service-card tilt glass">
-          <div class="service-icon" style="--icon-color:#ce9178">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3 class="service-title">Security &amp; Hardening</h3>
-          <p class="service-desc">CIS-benchmarked Linux baselines, SELinux/AppArmor policy, patch pipelines, secrets rotation, firewall and SSH lockdown.</p>
-          <ul class="service-list">
-            <li>CIS &amp; STIG compliance</li>
-            <li>SSH + fail2ban lockdown</li>
-            <li>Vulnerability scanning</li>
-          </ul>
-          <div class="service-hover-accent"></div>
-        </article>
-
-        <article class="service-card tilt glass">
-          <div class="service-icon" style="--icon-color:#c586c0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <h3 class="service-title">DevOps &amp; CI/CD</h3>
-          <p class="service-desc">GitHub Actions, GitLab CI, and Jenkins pipelines that test, scan, and deploy without drama. Zero-downtime releases included.</p>
-          <ul class="service-list">
-            <li>Pipeline design &amp; migration</li>
-            <li>Blue/green &amp; canary deploys</li>
-            <li>Pipeline hardening (SLSA)</li>
-          </ul>
-          <div class="service-hover-accent"></div>
-        </article>
-
-        <article class="service-card tilt glass">
-          <div class="service-icon" style="--icon-color:#4fc1ff">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          </div>
-          <h3 class="service-title">Cloud Infrastructure</h3>
-          <p class="service-desc">AWS, Azure, and GCP architecture that's secure by default, reproducible with Terraform, and priced for reality.</p>
-          <ul class="service-list">
-            <li>Terraform &amp; IaC</li>
-            <li>VPC + IAM design</li>
-            <li>Cost optimization audits</li>
-          </ul>
-          <div class="service-hover-accent"></div>
-        </article>
-
-        <article class="service-card tilt glass">
-          <div class="service-icon" style="--icon-color:#6a9955">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
-          </div>
-          <h3 class="service-title">Containers &amp; Orchestration</h3>
-          <p class="service-desc">Docker images that are small, signed, and scanned. Kubernetes clusters you can actually operate — with RBAC, network policies, and GitOps.</p>
-          <ul class="service-list">
-            <li>Docker &amp; Compose</li>
-            <li>Kubernetes (EKS/GKE/AKS)</li>
-            <li>Helm + ArgoCD GitOps</li>
-          </ul>
-          <div class="service-hover-accent"></div>
-        </article>
-
-        <article class="service-card tilt glass">
-          <div class="service-icon" style="--icon-color:#ce9178">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-6"/></svg>
-          </div>
-          <h3 class="service-title">Monitoring &amp; Observability</h3>
-          <p class="service-desc">Prometheus + Grafana stacks, Loki/ELK pipelines, and alerting that pages humans only when it matters.</p>
-          <ul class="service-list">
-            <li>Prometheus / Grafana</li>
-            <li>Loki / ELK log pipelines</li>
-            <li>SLO-based alerting</li>
-          </ul>
-          <div class="service-hover-accent"></div>
-        </article>
-
-        <article class="service-card tilt glass">
-          <div class="service-icon" style="--icon-color:#4fc1ff">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          </div>
-          <h3 class="service-title">Systems Administration</h3>
-          <p class="service-desc">Ubuntu, Debian, RHEL, CentOS, and Alpine — configured, patched, and documented so your next engineer doesn't panic.</p>
-          <ul class="service-list">
-            <li>Server provisioning</li>
-            <li>Ansible automation</li>
-            <li>Backup &amp; DR strategy</li>
-          </ul>
-          <div class="service-hover-accent"></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ SKILLS ============ -->
-    <section id="skills" class="section reveal">
-      <div class="section-head">
-        <div class="section-kicker"><span class="kicker-num">04</span><span>Skills</span></div>
-        <h2 class="section-title">Tools &amp; Technologies</h2>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-group glass">
-          <div class="skill-group-head">
-            <div class="skill-group-title">
-              <span class="skill-pill" style="--p:#4fc1ff">01</span>
-              Linux &amp; Security
-            </div>
-          </div>
-          <div class="tag-cloud">
-            <span class="tag tag-blue">Ubuntu</span>
-            <span class="tag tag-blue">Debian</span>
-            <span class="tag tag-blue">RHEL</span>
-            <span class="tag tag-blue">CentOS</span>
-            <span class="tag tag-blue">Alpine</span>
-            <span class="tag tag-orange">Bash / Zsh</span>
-            <span class="tag tag-orange">SSH Hardening</span>
-            <span class="tag tag-orange">iptables / nftables</span>
-            <span class="tag tag-orange">fail2ban</span>
-            <span class="tag tag-green">SELinux</span>
-            <span class="tag tag-green">AppArmor</span>
-            <span class="tag tag-green">CIS Benchmarks</span>
-            <span class="tag tag-purple">Vault</span>
-            <span class="tag tag-purple">OpenSSL / TLS</span>
-          </div>
-        </div>
-
-        <div class="skill-group glass">
-          <div class="skill-group-head">
-            <div class="skill-group-title">
-              <span class="skill-pill" style="--p:#c586c0">02</span>
-              Automation &amp; DevOps
-            </div>
-          </div>
-          <div class="tag-cloud">
-            <span class="tag tag-purple">Ansible</span>
-            <span class="tag tag-purple">Terraform</span>
-            <span class="tag tag-purple">Pulumi</span>
-            <span class="tag tag-blue">GitHub Actions</span>
-            <span class="tag tag-blue">GitLab CI</span>
-            <span class="tag tag-blue">Jenkins</span>
-            <span class="tag tag-orange">Docker</span>
-            <span class="tag tag-orange">Docker Compose</span>
-            <span class="tag tag-green">Kubernetes</span>
-            <span class="tag tag-green">Helm</span>
-            <span class="tag tag-green">ArgoCD</span>
-            <span class="tag tag-orange">Nginx / HAProxy</span>
-          </div>
-        </div>
-
-        <div class="skill-group glass">
-          <div class="skill-group-head">
-            <div class="skill-group-title">
-              <span class="skill-pill" style="--p:#6a9955">03</span>
-              Cloud &amp; Observability
-            </div>
-          </div>
-          <div class="tag-cloud">
-            <span class="tag tag-orange">AWS</span>
-            <span class="tag tag-blue">Azure</span>
-            <span class="tag tag-green">GCP</span>
-            <span class="tag tag-blue">EC2 / ECS / EKS</span>
-            <span class="tag tag-blue">S3 / RDS</span>
-            <span class="tag tag-purple">IAM</span>
-            <span class="tag tag-purple">VPC / Networking</span>
-            <span class="tag tag-orange">Prometheus</span>
-            <span class="tag tag-orange">Grafana</span>
-            <span class="tag tag-green">Loki</span>
-            <span class="tag tag-green">ELK Stack</span>
-            <span class="tag tag-purple">Datadog</span>
-          </div>
-        </div>
-
-        <div class="skill-group glass">
-          <div class="skill-group-head">
-            <div class="skill-group-title">
-              <span class="skill-pill" style="--p:#ce9178">04</span>
-              Languages &amp; Tooling
-            </div>
-          </div>
-          <div class="tag-cloud">
-            <span class="tag tag-blue">Python</span>
-            <span class="tag tag-blue">C++</span>
-            <span class="tag tag-blue">Java</span>
-            <span class="tag tag-orange">Assembly (8086)</span>
-            <span class="tag tag-orange">Bash</span>
-            <span class="tag tag-orange">PowerShell</span>
-            <span class="tag tag-purple">YAML / JSON</span>
-            <span class="tag tag-green">Git</span>
-            <span class="tag tag-green">Make</span>
-            <span class="tag tag-green">Vim / Neovim</span>
-            <span class="tag tag-purple">tmux</span>
-            <span class="tag tag-blue">VS Code</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="section reveal">
-      <div class="section-head">
-        <div class="section-kicker"><span class="kicker-num">05</span><span>Projects</span></div>
-        <h2 class="section-title">Featured Projects</h2>
-      </div>
-
-      <div class="projects-grid">
-        <article class="project-card tilt glass">
-          <div class="project-media">
-            <img src="assets/kpi.png" alt="PerformancePlus — Employee Performance Management System" />
-            <div class="project-badge">Java · Web</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="ptag">Java Servlets</span>
-              <span class="ptag">JSP</span>
-              <span class="ptag">MySQL</span>
-              <span class="ptag">Bootstrap</span>
-            </div>
-            <h3 class="project-title">PerformancePlus — Employee Performance Management</h3>
-            <p class="project-desc">A Java-based web application to track employee KPIs, provide managerial feedback, and maintain audit logs for transparent performance management.</p>
-            <div class="project-links">
-              <a class="plink plink-ghost" href="https://github.com/aswanisaraj/PerformancePlus" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                Code
-              </a>
-              <a class="plink plink-primary" href="https://www.youtube.com/watch?v=0kiP5wumt8c" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                Demo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card tilt glass">
-          <div class="project-media">
-            <img src="assets/assembly-pharmacy.jpg" alt="8086 Assembly Pharmacy Management" />
-            <div class="project-badge">Assembly · Systems</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="ptag">MASM8086</span>
-              <span class="ptag">Assembly</span>
-              <span class="ptag">File Handling</span>
-              <span class="ptag">System Programming</span>
-            </div>
-            <h3 class="project-title">8086 Assembly Pharmacy Management</h3>
-            <p class="project-desc">A pharmacy management program built entirely in Assembly language with file handling, stack, and register management for deep system understanding.</p>
-            <div class="project-links">
-              <a class="plink plink-ghost" href="https://github.com/aswanisaraj/Pharmacy-Mgmt-ASM8086" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                Code
-              </a>
-              <a class="plink plink-primary" href="https://github.com/aswanisaraj/Pharmacy-Mgmt-ASM8086/assets/115165910/f7721399-bb80-4b63-8012-e38b12f4d5bc" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                Demo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card tilt glass">
-          <div class="project-media">
-            <img src="assets/django-blog.jpg" alt="Django Blog System" />
-            <div class="project-badge">Python · Web</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="ptag">Django</span>
-              <span class="ptag">Python</span>
-              <span class="ptag">MySQL</span>
-              <span class="ptag">HTML</span>
-              <span class="ptag">CSS</span>
-              <span class="ptag">Authentication</span>
-            </div>
-            <h3 class="project-title">Django Blog System</h3>
-            <p class="project-desc">A Django-based blog application featuring user registration, authentication, permissions, and role management with a clean, responsive interface.</p>
-            <div class="project-links">
-              <a class="plink plink-ghost" href="https://github.com/aswanisaraj" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                Code
-              </a>
-              <a class="plink plink-primary" href="https://github.com/aswanisaraj" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                Demo
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card tilt glass">
-          <div class="project-media">
-            <img src="assets/iot.jpeg" alt="IoT Audio Streaming Setup" />
-            <div class="project-badge">IoT · Linux</div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags">
-              <span class="ptag">Balena Cloud</span>
-              <span class="ptag">Raspberry Pi</span>
-              <span class="ptag">IoT</span>
-              <span class="ptag">SDR</span>
-              <span class="ptag">Real-time Streaming</span>
-            </div>
-            <h3 class="project-title">IoT Audio Streaming Setup</h3>
-            <p class="project-desc">Configured Trunk Recorder and ZelloStream on Raspberry Pi using Balena Cloud to stream SDR audio into a Zello channel for real-time communication.</p>
-            <div class="project-links">
-              <a class="plink plink-ghost" href="https://github.com/aswanisaraj" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                Code
-              </a>
-              <a class="plink plink-primary" href="https://github.com/aswanisaraj" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                Demo
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section id="contact" class="section section-contact reveal">
-      <div class="section-head">
-        <div class="section-kicker"><span class="kicker-num">06</span><span>Contact</span></div>
-        <h2 class="section-title">Let's Build Something</h2>
-      </div>
-
-      <div class="contact-wrap glass">
-        <div class="contact-left">
-          <h3 class="contact-heading">Ship safer. Sleep better.</h3>
-          <p class="contact-sub">
-            Tell me about your infrastructure — where it hurts, what's breaking, or what you want to build. I reply within a business day.
-          </p>
-
-          <div class="contact-items">
-            <a class="contact-item" href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3" target="_blank" rel="noopener">
-              <span class="contact-icon" style="--ic:#6a9955">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.56 18.54a4.5 4.5 0 0 1-4.5-4.5v-.94c-.8 1.53-2 3.05-3.46 3.05a3.76 3.76 0 0 1-3.76-3.76V5h2.26v7.4a1.5 1.5 0 0 0 3 0V5h2.26v2.91a10.2 10.2 0 0 0 3.2 6.66 2.25 2.25 0 1 0-2.25-2.25h-2.25a4.5 4.5 0 1 1 5.5 4.22z"/></svg>
-              </span>
-              <span><span class="ci-k">Upwork</span><span class="ci-v">Top-Rated · 100% JSS</span></span>
-            </a>
-            <a class="contact-item" href="mailto:aswanisaraj@gmail.com">
-              <span class="contact-icon" style="--ic:#4fc1ff">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><polyline points="4 4 12 13 20 4"/></svg>
-              </span>
-              <span><span class="ci-k">Email</span><span class="ci-v">aswanisaraj@gmail.com</span></span>
-            </a>
-            <a class="contact-item" href="https://aswanisaraj.me" target="_blank" rel="noopener">
-              <span class="contact-icon" style="--ic:#c586c0">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </span>
-              <span><span class="ci-k">Website</span><span class="ci-v">aswanisaraj.me</span></span>
-            </a>
-            <div class="contact-item contact-item-static">
-              <span class="contact-icon" style="--ic:#ce9178">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </span>
-              <span><span class="ci-k">Location</span><span class="ci-v">Lahore, Pakistan · UTC+5</span></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-right">
-          
-          <div class="terminal terminal-sm">
-            <div class="terminal-head">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-amber"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="terminal-title">connect.sh</div>
-              <div class="terminal-actions"><span></span><span></span></div>
-            </div>
-            <div class="terminal-body terminal-sm-body">
-              <div class="t-line"><span class="t-dollar">$</span> <span class="t-cmd">ssh</span> <span class="hl-orange">saraj@</span><span class="hl-blue">aswanisaraj.me</span></div>
-              <div class="t-line"><span class="t-dollar">$</span> <span class="t-cmd">send</span> <span class="hl-purple">--subject</span>=<span class="hl-green">"New project"</span> \</div>
-              <div class="t-line t-indent"><span class="hl-purple">--budget</span>=<span class="hl-green">Your Budget</span> \</div>
-              <div class="t-line t-indent"><span class="hl-purple">--timeline</span>=<span class="hl-green">weeks</span></div>
-              <div class="t-out">
-                <span class="hl-green">✓</span> reply within <span class="hl-blue">1 business day</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn-primary btn-lg" href="https://linktr.ee/SarajAswani" target="_blank" rel="noopener">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              Start a Project
-            </a>
-            <a class="btn-outline btn-lg" href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3" target="_blank" rel="noopener">
-              Hire on Upwork
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <span class="brand-prompt">&gt;_</span>
-          <span>saraj.menghwar</span>
-        </div>
-        <div class="footer-copy">
-          © <span id="footerYear"></span> Saraj Menghwar — built with <span class="hl-orange">care</span>, <span class="hl-blue">Linux</span>, and a lot of <span class="hl-green">coffee</span>.
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    // ---------- Year ----------
-    (function(){
-      const y = new Date().getFullYear();
-      const yEl = document.getElementById('footerYear'); if (yEl) yEl.textContent = y;
-    })();
-
-    // ---------- Mobile drawer ----------
-    (function(){
-      const btn = document.getElementById('menuToggle');
-      const drawer = document.getElementById('mobileDrawer');
-      if (!btn || !drawer) return;
-      btn.addEventListener('click', () => {
-        const open = drawer.classList.toggle('open');
-        btn.classList.toggle('open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
-      });
-      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        drawer.classList.remove('open');
-        btn.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-        drawer.setAttribute('aria-hidden', 'true');
-      }));
-    })();
-
-    // ---------- Tabbar shrink on scroll ----------
-    (function(){
-      const tb = document.getElementById('tabbar');
-      if (!tb) return;
-      const onScroll = () => {
-        if (window.scrollY > 20) tb.classList.add('scrolled');
-        else tb.classList.remove('scrolled');
-      };
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
-    })();
-
-    // ---------- Terminal typing effect ----------
-    (function(){
-      const el = document.getElementById('termTyped');
-      if (!el) return;
-      const lines = [
-        { t: 'saraj_menghwar', cls: 'hl-blue' },
-        { t: ' // ', cls: 'hl-c' },
-        { t: 'DevSecOps & Linux Security Engineer', cls: 'hl-orange' }
-      ];
-      let i = 0, j = 0;
-      function tick(){
-        if (i >= lines.length) {
-          el.innerHTML += '<span class="cursor-blink">▊</span>';
-          return;
-        }
-        const cur = lines[i];
-        if (j === 0) {
-          const span = document.createElement('span');
-          span.className = cur.cls || '';
-          span.dataset.idx = i;
-          el.appendChild(span);
-        }
-        const span = el.querySelector(`span[data-idx="${i}"]`);
-        span.textContent += cur.t[j];
-        j++;
-        if (j >= cur.t.length) { i++; j = 0; }
-        setTimeout(tick, 28 + Math.random() * 40);
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-6TYMXQLC0Z"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-      // Start when hero enters viewport
-      const hero = document.getElementById('home');
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { tick(); io.disconnect(); } });
-      }, { threshold: 0.3 });
-      if (hero) io.observe(hero); else tick();
-    })();
+      gtag("js", new Date());
 
-    // ---------- Reveal on scroll ----------
-    (function(){
-      const els = document.querySelectorAll('.reveal');
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      gtag("config", "G-6TYMXQLC0Z");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saraj Menghwar — DevSecOps &amp; Linux Security Engineer</title>
+    <meta
+      name="description"
+      content="Top-Rated DevSecOps &amp; Linux Security Engineer. I help startups secure Linux infrastructure, automate DevOps pipelines, and build systems that stay up."
+    />
+    <meta name="author" content="Saraj Menghwar" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Saraj Menghwar — DevSecOps &amp; Linux Security"
+    />
+    <meta
+      property="og:description"
+      content="I help startups secure Linux infrastructure, automate DevOps pipelines, and build systems that stay up."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Saraj Menghwar — DevSecOps &amp; Linux Security"
+    />
+
+    <link
+      rel="icon"
+      href="assets/favicon.png?v=2027"
+      type="image/png"
+      sizes="64x64"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="assets/favicon.png?v=2027"
+      sizes="180x180"
+    />
+
+    <!-- SVG fallback favicon: terminal cursor ">_" matching theme -->
+    <link
+      rel="alternate icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231e1e1e'/><text x='10' y='44' font-family='monospace' font-size='34' font-weight='700' fill='%234fc1ff'>&gt;</text><rect x='34' y='36' width='16' height='6' fill='%23c586c0'/></svg>"
+    />
+
+    <!-- Fonts: Inter (UI) + JetBrains Mono (code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Ambient grid + glow backdrop -->
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-glow bg-glow-1"></div>
+      <div class="bg-glow bg-glow-2"></div>
+      <div class="bg-glow bg-glow-3"></div>
+    </div>
+
+    <!-- Top VS Code-style tab bar -->
+    <header class="tabbar" id="tabbar">
+      <div class="tabbar-inner">
+        <div class="tabbar-left">
+          <div class="window-dots" aria-hidden="true">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-amber"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <a href="#home" class="brand">
+            <span class="brand-prompt">&gt;_</span>
+            <span class="brand-name"
+              >saraj<span class="brand-dot">.</span>menghwar</span
+            >
+          </a>
+        </div>
+
+        <nav class="tabs" aria-label="Primary">
+          <a class="tab" href="#about"
+            ><span class="tab-icon">{}</span>about<span class="tab-ext"
+              >.md</span
+            ></a
+          >
+          <a class="tab" href="#stats"
+            ><span class="tab-icon">#</span>impact<span class="tab-ext"
+              >.json</span
+            ></a
+          >
+          <a class="tab" href="#services"
+            ><span class="tab-icon">λ</span>services<span class="tab-ext"
+              >.ts</span
+            ></a
+          >
+          <a class="tab" href="#skills"
+            ><span class="tab-icon">$</span>skills<span class="tab-ext"
+              >.sh</span
+            ></a
+          >
+          <a class="tab" href="#projects"
+            ><span class="tab-icon">//</span>projects<span class="tab-ext"
+              >.yml</span
+            ></a
+          >
+          <a class="tab" href="#contact"
+            ><span class="tab-icon">@</span>contact<span class="tab-ext"
+              >.env</span
+            ></a
+          >
+        </nav>
+
+        <div class="tabbar-right">
+          <a
+            class="btn-ghost"
+            href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="status-dot"></span> Top Rated
+          </a>
+          <a class="btn-primary" href="assets/resume.pdf" download>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Resume
+          </a>
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile drawer -->
+      <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <a href="#about">about.md</a>
+        <a href="#stats">impact.json</a>
+        <a href="#services">services.ts</a>
+        <a href="#skills">skills.sh</a>
+        <a href="#projects">projects.yml</a>
+        <a href="#contact">contact.env</a>
+        <a href="assets/resume.pdf" download class="drawer-cta"
+          >Download Résumé</a
+        >
+      </div>
+    </header>
+
+    <!-- Activity bar (desktop only) -->
+    <aside class="activity-bar" aria-hidden="true">
+      <a href="#home" class="ab-item active" title="Home">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path d="M3 12l9-9 9 9" />
+          <path d="M5 10v10h14V10" />
+        </svg>
+      </a>
+      <a href="#about" class="ab-item" title="About">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
+        </svg>
+      </a>
+      <a href="#services" class="ab-item" title="Services">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+        </svg>
+      </a>
+      <a href="#skills" class="ab-item" title="Skills">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      </a>
+      <a href="#projects" class="ab-item" title="Projects">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path d="M3 7l9-4 9 4-9 4-9-4z" />
+          <path d="M3 12l9 4 9-4" />
+          <path d="M3 17l9 4 9-4" />
+        </svg>
+      </a>
+      <a href="#contact" class="ab-item" title="Contact">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path d="M4 4h16v16H4z" />
+          <polyline points="4 4 12 13 20 4" />
+        </svg>
+      </a>
+    </aside>
+
+    <main class="main">
+      <!-- ============ HERO ============ -->
+      <section id="home" class="hero reveal">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="pulse"></span>
+              <span class="eyebrow-text">
+                <span class="mono-k">const</span>
+                <span class="mono-v">status</span> =
+                <span class="mono-s">"Available for new Engagements"</span>
+              </span>
+            </div>
+
+            <h1 class="hero-title">
+              Your servers shouldn't
+              <span class="title-accent">keep you up at night.</span>
+            </h1>
+
+            <!-- Terminal block -->
+            <div
+              class="terminal"
+              role="region"
+              aria-label="Terminal introduction"
+            >
+              <div class="terminal-head">
+                <div class="window-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-amber"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="terminal-title">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="4 17 10 11 4 5" />
+                    <line x1="12" y1="19" x2="20" y2="19" />
+                  </svg>
+                  zsh — saraj@devsecops ~
+                </div>
+                <div class="terminal-actions"><span></span><span></span></div>
+              </div>
+              <div class="terminal-body">
+                <div class="t-line">
+                  <span class="t-prompt">saraj@devsecops</span
+                  ><span class="t-sep">:</span
+                  ><span class="t-path">~/about</span
+                  ><span class="t-dollar">$</span>
+                  <span class="t-cmd">whoami</span>
+                </div>
+                <div class="t-out" id="termTyped"></div>
+                <div class="t-line mt">
+                  <span class="t-prompt">saraj@devsecops</span
+                  ><span class="t-sep">:</span
+                  ><span class="t-path">~/about</span
+                  ><span class="t-dollar">$</span>
+                  <span class="t-cmd">cat mission.txt</span>
+                </div>
+                <p class="t-paragraph">
+                  I help startups, SaaS companies, and growing teams
+                  <span class="hl-blue">secure Linux infrastructure</span>,
+                  <span class="hl-purple">automate DevOps pipelines</span>, and
+                  <span class="hl-green">build systems that stay up</span>
+                  - so you can focus on shipping products instead of
+                  <span class="hl-orange">chasing fires</span>.
+                </p>
+                <div class="t-line mt">
+                  <span class="t-prompt">saraj@devsecops</span
+                  ><span class="t-sep">:</span
+                  ><span class="t-path">~/about</span
+                  ><span class="t-dollar">$</span>
+                  <span class="cursor-blink">▊</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <a href="#services" class="btn-primary btn-lg">
+                <span>View My Work</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+              <a href="#contact" class="btn-outline btn-lg">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 4h16v16H4z" />
+                  <polyline points="4 4 12 13 20 4" />
+                </svg>
+                <span>Contact Me</span>
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-item">
+                <span class="meta-k">Location</span
+                ><span class="meta-v">Lahore, PK · UTC+5</span>
+              </div>
+              <div class="meta-divider"></div>
+              <div class="meta-item">
+                <span class="meta-k">Job Success</span
+                ><span class="meta-v hl-green">100%</span>
+              </div>
+              <div class="meta-divider"></div>
+              <div class="meta-item">
+                <span class="meta-k">Status</span
+                ><span class="meta-v hl-blue">Top Rated</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-portrait">
+            <div class="portrait-frame">
+              <div class="portrait-ring"></div>
+              <div class="portrait-ring portrait-ring-2"></div>
+              <img src="assets/profile.jpeg" alt="Saraj Menghwar portrait" />
+              <div class="portrait-badge">
+                <span class="pulse pulse-green"></span> Online
+              </div>
+            </div>
+            <div class="portrait-tags">
+              <span class="float-tag tag-1"
+                ><span class="dot-sm" style="background: #c586c0"></span>Top
+                Rated</span
+              >
+              <span class="float-tag tag-2"
+                ><span class="dot-sm" style="background: #6a9955"></span>100%
+                Job Success</span
+              >
+              <span class="float-tag tag-3"
+                ><span class="dot-sm" style="background: #4fc1ff"></span
+                >DevSecOps</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll hint -->
+        <a
+          href="#about"
+          class="scroll-hint"
+          aria-label="Scroll to about section"
+        >
+          <span>scroll</span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </a>
+      </section>
+
+      <!-- ============ ABOUT ============ -->
+      <section id="about" class="section reveal">
+        <div class="section-head">
+          <div class="section-kicker">
+            <span class="kicker-num">01</span><span>About</span>
+          </div>
+          <h2 class="section-title">Who I Am</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass">
+            <h3 class="about-heading">
+              DevSecOps &amp; Linux Security Engineer
+            </h3>
+            <p>
+              I'm <strong>Saraj Menghwar</strong>, a Computer Science graduate
+              from Tharparkar, Sindh, now based in Lahore. Over
+              <strong>1.5 years</strong> of hands-on work, I've focused on
+              hardening Linux infrastructure, securing cloud environments, and
+              designing DevOps pipelines that actually survive production.
+            </p>
+            <p>
+              I work with startups and growing teams - shipping reproducible
+              infrastructure, CI/CD that deploys in minutes instead of hours,
+              and monitoring that tells you about problems
+              <em>before</em> customers do.
+            </p>
+            <div class="chip-row">
+              <span class="chip"
+                ><span class="chip-dot" style="background: #4fc1ff"></span>1.5
+                years of experience</span
+              >
+              <span class="chip"
+                ><span class="chip-dot" style="background: #c586c0"></span
+                >Top-Rated Freelancer</span
+              >
+              <span class="chip"
+                ><span class="chip-dot" style="background: #6a9955"></span>100%
+                Job Success</span
+              >
+            </div>
+          </div>
+
+          <div class="about-side">
+            <div class="side-card glass">
+              <div class="side-card-head">
+                <span class="side-card-title">Philosophy</span>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ce9178"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+              </div>
+              <ul class="philosophy">
+                <li>
+                  <span class="bullet">01</span>Security is a feature, not a
+                  ticket.
+                </li>
+                <li>
+                  <span class="bullet">02</span>If you can't reproduce it, you
+                  don't own it.
+                </li>
+                <li>
+                  <span class="bullet">03</span>Automate the boring stuff -
+                  twice.
+                </li>
+                <li><span class="bullet">04</span>Monitoring beats heroics.</li>
+              </ul>
+            </div>
+
+            <div class="side-card glass interests">
+              <div class="side-card-head">
+                <span class="side-card-title">Off-Duty</span>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#c586c0"
+                  stroke-width="2"
+                >
+                  <polygon
+                    points="12 2 15 8 22 9 17 14 18 21 12 18 6 21 7 14 2 9 9 8 12 2"
+                  />
+                </svg>
+              </div>
+              <p class="interests-p">
+                Aspiring to become
+                <strong class="hl-green"
+                  >Pakistan's first chess Grandmaster</strong
+                >. I spend my evenings between a terminal and a chessboard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="stats" class="section reveal">
+        <div class="section-head">
+          <div class="section-kicker">
+            <span class="kicker-num">02</span><span>Impact</span>
+          </div>
+          <h2 class="section-title">Measurable Results</h2>
+        </div>
+
+        <div class="bento">
+          <div class="bento-card bento-lg glass" data-accent="blue">
+            <div class="bento-top">
+              <span class="bento-label">AWS Cost Reduction</span>
+              <svg
+                class="bento-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path
+                  d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                />
+              </svg>
+            </div>
+            <div class="bento-value" data-count="35" data-suffix="%">0%</div>
+            <p class="bento-desc">
+              Average monthly cloud spend reduction across right-sizing,
+              reserved capacity, and dead-resource reclamation.
+            </p>
+            <div class="spark" data-type="cost">
+              <svg viewBox="0 0 120 32" preserveAspectRatio="none">
+                <polyline
+                  points="0,8 15,10 30,6 45,12 60,18 75,20 90,24 105,26 120,28"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="bento-card glass" data-accent="green">
+            <div class="bento-top">
+              <span class="bento-label">Uptime Maintained</span>
+              <svg
+                class="bento-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div class="bento-value" data-count="99.9" data-suffix="%">0%</div>
+            <p class="bento-desc">
+              Across production Linux fleets with redundant load balancers and
+              HA databases.
+            </p>
+          </div>
+
+          <div class="bento-card glass" data-accent="purple">
+            <div class="bento-top">
+              <span class="bento-label">Deployment Cycle</span>
+              <svg
+                class="bento-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <polyline points="23 4 23 10 17 10" />
+                <polyline points="1 20 1 14 7 14" />
+                <path
+                  d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+                />
+              </svg>
+            </div>
+            <div class="bento-value" data-count="15" data-suffix="min">
+              0min
+            </div>
+            <p class="bento-desc">
+              From commit to production via hardened CI/CD — down from
+              multi-hour manual releases.
+            </p>
+          </div>
+
+          <div class="bento-card glass" data-accent="orange">
+            <div class="bento-top">
+              <span class="bento-label">Vulnerabilities Closed</span>
+              <svg
+                class="bento-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <div class="bento-value" data-count="90" data-suffix="%">0%</div>
+            <p class="bento-desc">
+              CVE exposure reduced via patch pipelines, CIS hardening, and
+              secrets rotation.
+            </p>
+          </div>
+
+          <div class="bento-card bento-wide glass" data-accent="blue">
+            <div class="bento-top">
+              <span class="bento-label"
+                >What this looks like in production</span
+              >
+            </div>
+            <div class="mini-metrics">
+              <div class="mm">
+                <span class="mm-v">100<span class="hl-green">%</span></span
+                ><span class="mm-k">Job Success</span>
+              </div>
+              <div class="mm">
+                <span class="mm-v hl-blue">Top</span
+                ><span class="mm-k">Rated Talent</span>
+              </div>
+              <div class="mm">
+                <span class="mm-v">24/7</span
+                ><span class="mm-k">Incident Coverage</span>
+              </div>
+              <div class="mm">
+                <span class="mm-v hl-purple">0</span
+                ><span class="mm-k">Breaches on Watch</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SERVICES ============ -->
+      <section id="services" class="section reveal">
+        <div class="section-head">
+          <div class="section-kicker">
+            <span class="kicker-num">03</span><span>Services</span>
+          </div>
+          <h2 class="section-title">What I Deliver</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card tilt glass">
+            <div class="service-icon" style="--icon-color: #ce9178">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="service-title">Security &amp; Hardening</h3>
+            <p class="service-desc">
+              CIS-benchmarked Linux baselines, SELinux/AppArmor policy, patch
+              pipelines, secrets rotation, firewall and SSH lockdown.
+            </p>
+            <ul class="service-list">
+              <li>CIS &amp; STIG compliance</li>
+              <li>SSH + fail2ban lockdown</li>
+              <li>Vulnerability scanning</li>
+            </ul>
+            <div class="service-hover-accent"></div>
+          </article>
+
+          <article class="service-card tilt glass">
+            <div class="service-icon" style="--icon-color: #c586c0">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3 class="service-title">DevOps &amp; CI/CD</h3>
+            <p class="service-desc">
+              GitHub Actions, GitLab CI, and Jenkins pipelines that test, scan,
+              and deploy without drama. Zero-downtime releases included.
+            </p>
+            <ul class="service-list">
+              <li>Pipeline design &amp; migration</li>
+              <li>Blue/green &amp; canary deploys</li>
+              <li>Pipeline hardening (SLSA)</li>
+            </ul>
+            <div class="service-hover-accent"></div>
+          </article>
+
+          <article class="service-card tilt glass">
+            <div class="service-icon" style="--icon-color: #4fc1ff">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+              </svg>
+            </div>
+            <h3 class="service-title">Cloud Infrastructure</h3>
+            <p class="service-desc">
+              AWS, Azure, and GCP architecture that's secure by default,
+              reproducible with Terraform, and priced for reality.
+            </p>
+            <ul class="service-list">
+              <li>Terraform &amp; IaC</li>
+              <li>VPC + IAM design</li>
+              <li>Cost optimization audits</li>
+            </ul>
+            <div class="service-hover-accent"></div>
+          </article>
+
+          <article class="service-card tilt glass">
+            <div class="service-icon" style="--icon-color: #6a9955">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M3 12h4l3-8 4 16 3-8h4" />
+              </svg>
+            </div>
+            <h3 class="service-title">Containers &amp; Orchestration</h3>
+            <p class="service-desc">
+              Docker images that are small, signed, and scanned. Kubernetes
+              clusters you can actually operate — with RBAC, network policies,
+              and GitOps.
+            </p>
+            <ul class="service-list">
+              <li>Docker &amp; Compose</li>
+              <li>Kubernetes (EKS/GKE/AKS)</li>
+              <li>Helm + ArgoCD GitOps</li>
+            </ul>
+            <div class="service-hover-accent"></div>
+          </article>
+
+          <article class="service-card tilt glass">
+            <div class="service-icon" style="--icon-color: #ce9178">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="M12 20V10" />
+                <path d="M18 20V4" />
+                <path d="M6 20v-6" />
+              </svg>
+            </div>
+            <h3 class="service-title">Monitoring &amp; Observability</h3>
+            <p class="service-desc">
+              Prometheus + Grafana stacks, Loki/ELK pipelines, and alerting that
+              pages humans only when it matters.
+            </p>
+            <ul class="service-list">
+              <li>Prometheus / Grafana</li>
+              <li>Loki / ELK log pipelines</li>
+              <li>SLO-based alerting</li>
+            </ul>
+            <div class="service-hover-accent"></div>
+          </article>
+
+          <article class="service-card tilt glass">
+            <div class="service-icon" style="--icon-color: #4fc1ff">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                />
+              </svg>
+            </div>
+            <h3 class="service-title">Systems Administration</h3>
+            <p class="service-desc">
+              Ubuntu, Debian, RHEL, CentOS, and Alpine — configured, patched,
+              and documented so your next engineer doesn't panic.
+            </p>
+            <ul class="service-list">
+              <li>Server provisioning</li>
+              <li>Ansible automation</li>
+              <li>Backup &amp; DR strategy</li>
+            </ul>
+            <div class="service-hover-accent"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills" class="section reveal">
+        <div class="section-head">
+          <div class="section-kicker">
+            <span class="kicker-num">04</span><span>Skills</span>
+          </div>
+          <h2 class="section-title">Tools &amp; Technologies</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group glass">
+            <div class="skill-group-head">
+              <div class="skill-group-title">
+                <span class="skill-pill" style="--p: #4fc1ff">01</span>
+                Linux &amp; Security
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag tag-blue">Ubuntu</span>
+              <span class="tag tag-blue">Debian</span>
+              <span class="tag tag-blue">RHEL</span>
+              <span class="tag tag-blue">CentOS</span>
+              <span class="tag tag-blue">Alpine</span>
+              <span class="tag tag-orange">Bash / Zsh</span>
+              <span class="tag tag-orange">SSH Hardening</span>
+              <span class="tag tag-orange">iptables / nftables</span>
+              <span class="tag tag-orange">fail2ban</span>
+              <span class="tag tag-green">SELinux</span>
+              <span class="tag tag-green">AppArmor</span>
+              <span class="tag tag-green">CIS Benchmarks</span>
+              <span class="tag tag-purple">Vault</span>
+              <span class="tag tag-purple">OpenSSL / TLS</span>
+            </div>
+          </div>
+
+          <div class="skill-group glass">
+            <div class="skill-group-head">
+              <div class="skill-group-title">
+                <span class="skill-pill" style="--p: #c586c0">02</span>
+                Automation &amp; DevOps
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag tag-purple">Ansible</span>
+              <span class="tag tag-purple">Terraform</span>
+              <span class="tag tag-purple">Pulumi</span>
+              <span class="tag tag-blue">GitHub Actions</span>
+              <span class="tag tag-blue">GitLab CI</span>
+              <span class="tag tag-blue">Jenkins</span>
+              <span class="tag tag-orange">Docker</span>
+              <span class="tag tag-orange">Docker Compose</span>
+              <span class="tag tag-green">Kubernetes</span>
+              <span class="tag tag-green">Helm</span>
+              <span class="tag tag-green">ArgoCD</span>
+              <span class="tag tag-orange">Nginx / HAProxy</span>
+            </div>
+          </div>
+
+          <div class="skill-group glass">
+            <div class="skill-group-head">
+              <div class="skill-group-title">
+                <span class="skill-pill" style="--p: #6a9955">03</span>
+                Cloud &amp; Observability
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag tag-orange">AWS</span>
+              <span class="tag tag-blue">Azure</span>
+              <span class="tag tag-green">GCP</span>
+              <span class="tag tag-blue">EC2 / ECS / EKS</span>
+              <span class="tag tag-blue">S3 / RDS</span>
+              <span class="tag tag-purple">IAM</span>
+              <span class="tag tag-purple">VPC / Networking</span>
+              <span class="tag tag-orange">Prometheus</span>
+              <span class="tag tag-orange">Grafana</span>
+              <span class="tag tag-green">Loki</span>
+              <span class="tag tag-green">ELK Stack</span>
+              <span class="tag tag-purple">Datadog</span>
+            </div>
+          </div>
+
+          <div class="skill-group glass">
+            <div class="skill-group-head">
+              <div class="skill-group-title">
+                <span class="skill-pill" style="--p: #ce9178">04</span>
+                Languages &amp; Tooling
+              </div>
+            </div>
+            <div class="tag-cloud">
+              <span class="tag tag-blue">Python</span>
+              <span class="tag tag-blue">C++</span>
+              <span class="tag tag-blue">Java</span>
+              <span class="tag tag-orange">Assembly (8086)</span>
+              <span class="tag tag-orange">Bash</span>
+              <span class="tag tag-orange">PowerShell</span>
+              <span class="tag tag-purple">YAML / JSON</span>
+              <span class="tag tag-green">Git</span>
+              <span class="tag tag-green">Make</span>
+              <span class="tag tag-green">Vim / Neovim</span>
+              <span class="tag tag-purple">tmux</span>
+              <span class="tag tag-blue">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects" class="section reveal">
+        <div class="section-head">
+          <div class="section-kicker">
+            <span class="kicker-num">05</span><span>Projects</span>
+          </div>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card tilt glass">
+            <div class="project-media">
+              <img
+                src="assets/kpi.png"
+                alt="PerformancePlus — Employee Performance Management System"
+              />
+              <div class="project-badge">Java · Web</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="ptag">Java Servlets</span>
+                <span class="ptag">JSP</span>
+                <span class="ptag">MySQL</span>
+                <span class="ptag">Bootstrap</span>
+              </div>
+              <h3 class="project-title">
+                PerformancePlus — Employee Performance Management
+              </h3>
+              <p class="project-desc">
+                A Java-based web application to track employee KPIs, provide
+                managerial feedback, and maintain audit logs for transparent
+                performance management.
+              </p>
+              <div class="project-links">
+                <a
+                  class="plink plink-ghost"
+                  href="https://github.com/aswanisaraj/PerformancePlus"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                  Code
+                </a>
+                <a
+                  class="plink plink-primary"
+                  href="https://www.youtube.com/watch?v=0kiP5wumt8c"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                  </svg>
+                  Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card tilt glass">
+            <div class="project-media">
+              <img
+                src="assets/assembly-pharmacy.jpg"
+                alt="8086 Assembly Pharmacy Management"
+              />
+              <div class="project-badge">Assembly · Systems</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="ptag">MASM8086</span>
+                <span class="ptag">Assembly</span>
+                <span class="ptag">File Handling</span>
+                <span class="ptag">System Programming</span>
+              </div>
+              <h3 class="project-title">8086 Assembly Pharmacy Management</h3>
+              <p class="project-desc">
+                A pharmacy management program built entirely in Assembly
+                language with file handling, stack, and register management for
+                deep system understanding.
+              </p>
+              <div class="project-links">
+                <a
+                  class="plink plink-ghost"
+                  href="https://github.com/aswanisaraj/Pharmacy-Mgmt-ASM8086"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                  Code
+                </a>
+                <a
+                  class="plink plink-primary"
+                  href="https://github.com/aswanisaraj/Pharmacy-Mgmt-ASM8086/assets/115165910/f7721399-bb80-4b63-8012-e38b12f4d5bc"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                  </svg>
+                  Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card tilt glass">
+            <div class="project-media">
+              <img src="assets/django-blog.jpg" alt="Django Blog System" />
+              <div class="project-badge">Python · Web</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="ptag">Django</span>
+                <span class="ptag">Python</span>
+                <span class="ptag">MySQL</span>
+                <span class="ptag">HTML</span>
+                <span class="ptag">CSS</span>
+                <span class="ptag">Authentication</span>
+              </div>
+              <h3 class="project-title">Django Blog System</h3>
+              <p class="project-desc">
+                A Django-based blog application featuring user registration,
+                authentication, permissions, and role management with a clean,
+                responsive interface.
+              </p>
+              <div class="project-links">
+                <a
+                  class="plink plink-ghost"
+                  href="https://github.com/aswanisaraj"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                  Code
+                </a>
+                <a
+                  class="plink plink-primary"
+                  href="https://github.com/aswanisaraj"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                  </svg>
+                  Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card tilt glass">
+            <div class="project-media">
+              <img src="assets/iot.jpeg" alt="IoT Audio Streaming Setup" />
+              <div class="project-badge">IoT · Linux</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="ptag">Balena Cloud</span>
+                <span class="ptag">Raspberry Pi</span>
+                <span class="ptag">IoT</span>
+                <span class="ptag">SDR</span>
+                <span class="ptag">Real-time Streaming</span>
+              </div>
+              <h3 class="project-title">IoT Audio Streaming Setup</h3>
+              <p class="project-desc">
+                Configured Trunk Recorder and ZelloStream on Raspberry Pi using
+                Balena Cloud to stream SDR audio into a Zello channel for
+                real-time communication.
+              </p>
+              <div class="project-links">
+                <a
+                  class="plink plink-ghost"
+                  href="https://github.com/aswanisaraj"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    />
+                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                  </svg>
+                  Code
+                </a>
+                <a
+                  class="plink plink-primary"
+                  href="https://github.com/aswanisaraj"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                  </svg>
+                  Demo
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section id="contact" class="section section-contact reveal">
+        <div class="section-head">
+          <div class="section-kicker">
+            <span class="kicker-num">06</span><span>Contact</span>
+          </div>
+          <h2 class="section-title">Let's Build Something</h2>
+        </div>
+
+        <div class="contact-wrap glass">
+          <div class="contact-left">
+            <h3 class="contact-heading">Ship safer. Sleep better.</h3>
+            <p class="contact-sub">
+              Tell me about your infrastructure — where it hurts, what's
+              breaking, or what you want to build. I reply within a business
+              day.
+            </p>
+
+            <div class="contact-items">
+              <a
+                class="contact-item"
+                href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="contact-icon" style="--ic: #6a9955">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M18.56 18.54a4.5 4.5 0 0 1-4.5-4.5v-.94c-.8 1.53-2 3.05-3.46 3.05a3.76 3.76 0 0 1-3.76-3.76V5h2.26v7.4a1.5 1.5 0 0 0 3 0V5h2.26v2.91a10.2 10.2 0 0 0 3.2 6.66 2.25 2.25 0 1 0-2.25-2.25h-2.25a4.5 4.5 0 1 1 5.5 4.22z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  ><span class="ci-k">Upwork</span
+                  ><span class="ci-v">Top-Rated · 100% JSS</span></span
+                >
+              </a>
+              <a class="contact-item" href="mailto:aswanisaraj@gmail.com">
+                <span class="contact-icon" style="--ic: #4fc1ff">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path d="M4 4h16v16H4z" />
+                    <polyline points="4 4 12 13 20 4" />
+                  </svg>
+                </span>
+                <span
+                  ><span class="ci-k">Email</span
+                  ><span class="ci-v">aswanisaraj@gmail.com</span></span
+                >
+              </a>
+              <a
+                class="contact-item"
+                href="https://aswanisaraj.me"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="contact-icon" style="--ic: #c586c0">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  ><span class="ci-k">Website</span
+                  ><span class="ci-v">aswanisaraj.me</span></span
+                >
+              </a>
+              <div class="contact-item contact-item-static">
+                <span class="contact-icon" style="--ic: #ce9178">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <span
+                  ><span class="ci-k">Location</span
+                  ><span class="ci-v">Lahore, Pakistan · UTC+5</span></span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <div class="terminal terminal-sm">
+              <div class="terminal-head">
+                <div class="window-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-amber"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="terminal-title">connect.sh</div>
+                <div class="terminal-actions"><span></span><span></span></div>
+              </div>
+              <div class="terminal-body terminal-sm-body">
+                <div class="t-line">
+                  <span class="t-dollar">$</span> <span class="t-cmd">ssh</span>
+                  <span class="hl-orange">saraj@</span
+                  ><span class="hl-blue">aswanisaraj.me</span>
+                </div>
+                <div class="t-line">
+                  <span class="t-dollar">$</span>
+                  <span class="t-cmd">send</span>
+                  <span class="hl-purple">--subject</span>=<span
+                    class="hl-green"
+                    >"New project"</span
+                  >
+                  \
+                </div>
+                <div class="t-line t-indent">
+                  <span class="hl-purple">--budget</span>=<span class="hl-green"
+                    >Your Budget</span
+                  >
+                  \
+                </div>
+                <div class="t-line t-indent">
+                  <span class="hl-purple">--timeline</span>=<span
+                    class="hl-green"
+                    >weeks</span
+                  >
+                </div>
+                <div class="t-out">
+                  <span class="hl-green">✓</span> reply within
+                  <span class="hl-blue">1 business day</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a
+                class="btn-primary btn-lg"
+                href="https://linktr.ee/SarajAswani"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                  />
+                  <path
+                    d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                  />
+                </svg>
+                Start a Project
+              </a>
+              <a
+                class="btn-outline btn-lg"
+                href="https://www.upwork.com/freelancers/~015f34e1dcfda665c3"
+                target="_blank"
+                rel="noopener"
+              >
+                Hire on Upwork
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <span class="brand-prompt">&gt;_</span>
+            <span>saraj.menghwar</span>
+          </div>
+          <div class="footer-copy">
+            © <span id="footerYear"></span> Saraj Menghwar — built with
+            <span class="hl-orange">care</span>,
+            <span class="hl-blue">Linux</span>, and a lot of
+            <span class="hl-green">coffee</span>.
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // ---------- Year ----------
+      (function () {
+        const y = new Date().getFullYear();
+        const yEl = document.getElementById("footerYear");
+        if (yEl) yEl.textContent = y;
+      })();
+
+      // ---------- Mobile drawer ----------
+      (function () {
+        const btn = document.getElementById("menuToggle");
+        const drawer = document.getElementById("mobileDrawer");
+        if (!btn || !drawer) return;
+        btn.addEventListener("click", () => {
+          const open = drawer.classList.toggle("open");
+          btn.classList.toggle("open", open);
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          drawer.setAttribute("aria-hidden", open ? "false" : "true");
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-      els.forEach(el => io.observe(el));
-    })();
+        drawer.querySelectorAll("a").forEach((a) =>
+          a.addEventListener("click", () => {
+            drawer.classList.remove("open");
+            btn.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
+            drawer.setAttribute("aria-hidden", "true");
+          }),
+        );
+      })();
 
-    // ---------- Count-up for bento stats ----------
-    (function(){
-      const nodes = document.querySelectorAll('.bento-value[data-count]');
-      if (!nodes.length) return;
-      const animate = (node) => {
-        const target = parseFloat(node.dataset.count);
-        const suffix = node.dataset.suffix || '';
-        const isFloat = !Number.isInteger(target);
-        const dur = 1400;
-        const start = performance.now();
-        function frame(now){
-          const p = Math.min(1, (now - start) / dur);
-          const eased = 1 - Math.pow(1 - p, 3);
-          const v = target * eased;
-          node.textContent = (isFloat ? v.toFixed(1) : Math.round(v)) + suffix;
-          if (p < 1) requestAnimationFrame(frame);
-        }
-        requestAnimationFrame(frame);
-      };
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); } });
-      }, { threshold: 0.4 });
-      nodes.forEach(n => io.observe(n));
-    })();
+      // ---------- Tabbar shrink on scroll ----------
+      (function () {
+        const tb = document.getElementById("tabbar");
+        if (!tb) return;
+        const onScroll = () => {
+          if (window.scrollY > 20) tb.classList.add("scrolled");
+          else tb.classList.remove("scrolled");
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      })();
 
-    // ---------- 3D tilt on cards ----------
-    (function(){
-      if (window.matchMedia('(hover: none)').matches) return;
-      const cards = document.querySelectorAll('.tilt');
-      cards.forEach(card => {
-        let raf = 0;
-        function onMove(ev){
-          const r = card.getBoundingClientRect();
-          const x = (ev.clientX - r.left) / r.width;
-          const y = (ev.clientY - r.top) / r.height;
-          const rx = (y - 0.5) * -8;
-          const ry = (x - 0.5) * 10;
-          cancelAnimationFrame(raf);
-          raf = requestAnimationFrame(() => {
-            card.style.setProperty('--rx', rx + 'deg');
-            card.style.setProperty('--ry', ry + 'deg');
-            card.style.setProperty('--mx', (x * 100) + '%');
-            card.style.setProperty('--my', (y * 100) + '%');
-          });
-        }
-        function reset(){
-          card.style.setProperty('--rx', '0deg');
-          card.style.setProperty('--ry', '0deg');
-        }
-        card.addEventListener('mousemove', onMove);
-        card.addEventListener('mouseleave', reset);
-      });
-    })();
-
-    // ---------- Active tab highlight ----------
-    (function(){
-      const tabs = document.querySelectorAll('.tabs .tab, .activity-bar .ab-item');
-      const ids = ['about','stats','services','skills','projects','contact','home'];
-      const map = {};
-      tabs.forEach(t => {
-        const h = t.getAttribute('href'); if (!h) return;
-        const id = h.replace('#','');
-        (map[id] = map[id] || []).push(t);
-      });
-      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            tabs.forEach(t => t.classList.remove('active'));
-            (map[e.target.id] || []).forEach(t => t.classList.add('active'));
+      // ---------- Terminal typing effect ----------
+      (function () {
+        const el = document.getElementById("termTyped");
+        if (!el) return;
+        const lines = [
+          { t: "saraj_menghwar", cls: "hl-blue" },
+          { t: " // ", cls: "hl-c" },
+          { t: "DevSecOps & Linux Security Engineer", cls: "hl-orange" },
+        ];
+        let i = 0,
+          j = 0;
+        function tick() {
+          if (i >= lines.length) {
+            el.innerHTML += '<span class="cursor-blink">▊</span>';
+            return;
           }
+          const cur = lines[i];
+          if (j === 0) {
+            const span = document.createElement("span");
+            span.className = cur.cls || "";
+            span.dataset.idx = i;
+            el.appendChild(span);
+          }
+          const span = el.querySelector(`span[data-idx="${i}"]`);
+          span.textContent += cur.t[j];
+          j++;
+          if (j >= cur.t.length) {
+            i++;
+            j = 0;
+          }
+          setTimeout(tick, 28 + Math.random() * 40);
+        }
+        // Start when hero enters viewport
+        const hero = document.getElementById("home");
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                tick();
+                io.disconnect();
+              }
+            });
+          },
+          { threshold: 0.3 },
+        );
+        if (hero) io.observe(hero);
+        else tick();
+      })();
+
+      // ---------- Reveal on scroll ----------
+      (function () {
+        const els = document.querySelectorAll(".reveal");
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-visible");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+
+      // ---------- Count-up for bento stats ----------
+      (function () {
+        const nodes = document.querySelectorAll(".bento-value[data-count]");
+        if (!nodes.length) return;
+        const animate = (node) => {
+          const target = parseFloat(node.dataset.count);
+          const suffix = node.dataset.suffix || "";
+          const isFloat = !Number.isInteger(target);
+          const dur = 1400;
+          const start = performance.now();
+          function frame(now) {
+            const p = Math.min(1, (now - start) / dur);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const v = target * eased;
+            node.textContent =
+              (isFloat ? v.toFixed(1) : Math.round(v)) + suffix;
+            if (p < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        };
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                animate(e.target);
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.4 },
+        );
+        nodes.forEach((n) => io.observe(n));
+      })();
+
+      // ---------- 3D tilt on cards ----------
+      (function () {
+        if (window.matchMedia("(hover: none)").matches) return;
+        const cards = document.querySelectorAll(".tilt");
+        cards.forEach((card) => {
+          let raf = 0;
+          function onMove(ev) {
+            const r = card.getBoundingClientRect();
+            const x = (ev.clientX - r.left) / r.width;
+            const y = (ev.clientY - r.top) / r.height;
+            const rx = (y - 0.5) * -8;
+            const ry = (x - 0.5) * 10;
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              card.style.setProperty("--rx", rx + "deg");
+              card.style.setProperty("--ry", ry + "deg");
+              card.style.setProperty("--mx", x * 100 + "%");
+              card.style.setProperty("--my", y * 100 + "%");
+            });
+          }
+          function reset() {
+            card.style.setProperty("--rx", "0deg");
+            card.style.setProperty("--ry", "0deg");
+          }
+          card.addEventListener("mousemove", onMove);
+          card.addEventListener("mouseleave", reset);
         });
-      }, { threshold: 0.35 });
-      sections.forEach(s => io.observe(s));
-    })();
-  </script>
-</body>
+      })();
+
+      // ---------- Active tab highlight ----------
+      (function () {
+        const tabs = document.querySelectorAll(
+          ".tabs .tab, .activity-bar .ab-item",
+        );
+        const ids = [
+          "about",
+          "stats",
+          "services",
+          "skills",
+          "projects",
+          "contact",
+          "home",
+        ];
+        const map = {};
+        tabs.forEach((t) => {
+          const h = t.getAttribute("href");
+          if (!h) return;
+          const id = h.replace("#", "");
+          (map[id] = map[id] || []).push(t);
+        });
+        const sections = ids
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                tabs.forEach((t) => t.classList.remove("active"));
+                (map[e.target.id] || []).forEach((t) =>
+                  t.classList.add("active"),
+                );
+              }
+            });
+          },
+          { threshold: 0.35 },
+        );
+        sections.forEach((s) => io.observe(s));
+      })();
+    </script>
+  </body>
 </html>
